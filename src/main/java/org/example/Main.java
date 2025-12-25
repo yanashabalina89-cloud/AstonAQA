@@ -1,17 +1,37 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        String[][] array =  {
+                {"1", "2", "3", "4"},
+                {"5", "6", "7", "8"},
+                {"9", "10", "11", "12"},
+                {"13", "14", "15", "16"}
+        };
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        try {
+            sumStringMatrix(array);
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            e.printStackTrace();
         }
+
+    }
+
+    public static int sumStringMatrix(String[][] matrix) throws MyArraySizeException, MyArrayDataException {
+        if (matrix == null || matrix.length != 4) {
+            throw new MyArraySizeException("Массив должен иметь размер 4x4.");
+        }
+        int sum = 0;
+        for(int i = 0; i < matrix.length; i++){
+            if (matrix[i] == null || matrix[i].length != 4) {
+                throw new MyArraySizeException("Массив должен иметь размер 4x4. В строке " + i + " количество столбцов: " +
+                        (matrix[i] == null ? 0 : matrix[i].length));
+                }
+            for(int j = 0; j < matrix[i].length; j++){
+                int element = Integer.parseInt(matrix[i][j]);
+                sum += element;
+            }
+        }
+        return sum;
     }
 }
