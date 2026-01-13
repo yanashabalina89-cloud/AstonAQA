@@ -1,21 +1,22 @@
 import org.example.Factorial;
 import org.testng.annotations.Test;
-
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertThrows;
 
 public class FactorialTest {
     @Test
     void testFactorial() {
-        assertEquals(362880, Factorial.calculate(9));
+        assertEquals(Factorial.calculate(9), 362880);
     }
 
     @Test
     void testFactorialZero() {
-        assertEquals(1, Factorial.calculate(0));
+        assertEquals( Factorial.calculate(0), 1);
     }
 
     @Test
     void testFactorialOne() {
-        assertEquals(1, Factorial.calculate(1));
+        assertEquals(Factorial.calculate(1), 1);
     }
 
     @Test

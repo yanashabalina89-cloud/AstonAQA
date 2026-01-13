@@ -1,30 +1,23 @@
 import org.example.Comparison;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
+import static org.testng.Assert.assertEquals;
 
 public class ComparisonTest {
-    @Test
-    void testCompareLess() {
-        assertEquals(-1, Comparison.compare(91, 345));
+
+    @DataProvider
+    public Object[][] comparisonData(){
+        return new Object[][]{
+                {91, 345, -1},
+                {78, 6, 1},
+                {-99, -99, 0},
+                {Integer.MIN_VALUE, Integer.MAX_VALUE, -1},
+                {0, 0, 0}
+        };
     }
 
-    @Test
-    void testCompareGreater() {
-        assertEquals(1, Comparison.compare(78, 6));
-    }
-
-    @Test
-    void testCompareEqual() {
-        assertEquals(0, Comparison.compare(-99, -99));
-    }
-
-    @Test
-    void testCompareMinMax() {
-        assertEquals(-1, Comparison.compare(Integer.MIN_VALUE, Integer.MAX_VALUE));
-    }
-
-    @Test
-    void testCompareZero() {
-        assertEquals(0, Comparison.compare(0, 0));
+    @Test(dataProvider = "comparisonData")
+    void testCompare(int a, int b, int excepted) {
+        assertEquals(Comparison.compare(a,b), excepted);
     }
 }
