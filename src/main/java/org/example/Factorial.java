@@ -1,14 +1,16 @@
 package org.example;
 
+import java.math.BigInteger;
+
 public class Factorial{
 
-    public static long calculate(int n) {
+    public static BigInteger calculate(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Факториал не определён для отрицательных чисел.");
         }
-        long result = 1;
+        BigInteger result = BigInteger.ONE;
         for (int i = 2; i <= n; i++) {
-            result *= i;
+            result = result.multiply(BigInteger.valueOf(i));
         }
         return result;
     }

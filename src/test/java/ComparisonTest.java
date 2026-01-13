@@ -17,7 +17,7 @@ public class ComparisonTest {
     }
 
     @Test(dataProvider = "comparisonData")
-    void testCompare(int a, int b, int excepted) {
-        assertEquals(Comparison.compare(a,b), excepted);
+    void testCompare(int a, int b, int expected) {
+        assertEquals(Comparison.compare(a,b), expected);
     }
 }
