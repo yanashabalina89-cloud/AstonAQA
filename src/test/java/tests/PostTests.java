@@ -30,7 +30,6 @@ public class PostTests {
 
     @Test
     public void postFormData() {
-        String requestBody = "foo1=bar1&foo2=bar2";
         given()
                 .spec(RequestSpec.requestSpec)
                 .contentType("application/x-www-form-urlencoded; charset=UTF-8")
